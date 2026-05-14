@@ -45,7 +45,7 @@ for (int i = countdownStart; i > 0; i--) {
 
     lcd.clear();
     lcd.setCursor(0, 0);
-    lcd.print("Focus starts");
+    lcd.print("Focus starts in");
     lcd.setCursor(0, 1);
     lcd.print(i);
      tone(buzzerPin, 800);
@@ -97,7 +97,7 @@ void loop() {
     countdown();
     focusMode();
     finish();
-    
+
  // Show start screen again
     lcd.clear();
     lcd.setCursor(0, 0);
