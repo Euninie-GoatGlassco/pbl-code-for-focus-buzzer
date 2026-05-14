@@ -38,6 +38,20 @@ void endMelody() {
   tone(buzzerPin, 1800);
   delay(500);
   noTone(buzzerPin);
+}
+
+// Countdown before the focus buzzer starts
+
+void countdown() {
+for (int i = countdownStart; i > 0; i--) {
+
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Focus starts");
+    lcd.setCursor(0, 1);
+    lcd.print(i)
+
+
 
 
 
