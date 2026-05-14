@@ -39,6 +39,7 @@ void endMelody() {
   delay(500);
   noTone(buzzerPin);
 }
+// to Manually start Focus
 
 // Countdown before the focus buzzer starts
 
