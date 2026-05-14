@@ -3,11 +3,10 @@
 // LCD pin connections
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
-const int buzzerPin = 8; // declaring the pin for the buzzer
-const int focusTime = 60; // the amount of time the focus timer 
-const int button = 7; // declaring the pin for the button
-const int countdown= 5; // before the focus buzzer timer
-
+const int buzzerPin = 8;  
+const int focusTime = 60; 
+const int buttonPin = 7; 
+const int countdownStart = 5;  
 
 void setup() {
  // Defining outputs and inputs
@@ -26,7 +25,7 @@ void endMelody() {
 
   tone(buzzerPin, 1200);
   delay(300);
-  noTone(buzzerPin)
+  noTone(buzzerPin);
   delay(100);
 
   tone(buzzerPin, 1500);
@@ -39,7 +38,6 @@ void endMelody() {
   delay(500);
   noTone(buzzerPin);
 }
-
 // Countdown before the focus buzzer starts
 
 void countdown() {
@@ -49,7 +47,7 @@ for (int i = countdownStart; i > 0; i--) {
     lcd.setCursor(0, 0);
     lcd.print("Focus starts");
     lcd.setCursor(0, 1);
-    lcd.print(i)
+    lcd.print(i);
      tone(buzzerPin, 800);
 
     delay(200);
@@ -80,39 +78,34 @@ while (millis() - startTime < (unsigned long)focusTime * 1000) {
 void finish() {
 
   lcd.clear();
-
   lcd.setCursor(0, 0);
   lcd.print("TIME IS UP!");
-
   lcd.setCursor(0, 1);
   lcd.print("Good job");
-
   endMelody();
-
   delay(3000);
 }
 // Main loop
 
 void loop() {
 
-  lcd.setCursor(0, 0);
-  lcd.print("Press button ");
 
-  lcd.setCursor(0, 1);
-  lcd.print("to start     ");
+  if (digitalRead(buttonPin) == LOW) {
 
-  // WAIT until button is pressed
-  while (digitalRead(buttonPin) == HIGH) {
+    delay(200);
 
+    countdown();
+    focusMode();
+    finish();
+    
+ // Show start screen again
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Press button");
+    lcd.setCursor(0, 1);
+    lcd.print("to start");
+    
   }
-
-  delay(200);
-
-  countdown();
-
-  focusMode();
-
-  finish();
 }
 
 
