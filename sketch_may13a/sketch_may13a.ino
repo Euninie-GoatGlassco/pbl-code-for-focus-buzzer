@@ -5,6 +5,8 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 // Buzzer pin
 const int buzzerPin = 8;
+const int focusTime = 60;
+const int button = 7;
 
 // Focus time in milliseconds
 // 60000 ms = 1 minute
