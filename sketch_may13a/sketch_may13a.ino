@@ -75,6 +75,22 @@ while (millis() - startTime < (unsigned long)focusTime * 1000) {
     delay(200);
   }
 }
+//  The end of the Focus buzzer
+
+void finish() {
+
+  lcd.clear();
+
+  lcd.setCursor(0, 0);
+  lcd.print("TIME IS UP!");
+
+  lcd.setCursor(0, 1);
+  lcd.print("Good job");
+
+  endMelody();
+
+  delay(3000);
+}
 
 
 
