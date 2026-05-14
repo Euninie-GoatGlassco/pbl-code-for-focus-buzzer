@@ -41,7 +41,7 @@ void endMelody() {
 // Countdown before the focus buzzer starts
 
 void countdown() {
-for (int i = countdownStart; i > 0; i--) {
+for (int i = countdownStart; i > 0; i--) { // 
 
     lcd.clear();
     lcd.setCursor(0, 0);
@@ -62,10 +62,10 @@ for (int i = countdownStart; i > 0; i--) {
 void focusMode() {
 unsigned long startTime = millis();
 
-while (millis() - startTime < (unsigned long)focusTime * 1000) {
+while (millis() - startTime < (unsigned long)focusTime * 1000) {  // keeps running code when under 60 seconds 
 
     lcd.setCursor(0, 0);
-    lcd.print("FOCUS MODE   ");
+    lcd.print(" FOCUS MODE ");
 
     lcd.setCursor(0, 1);
     lcd.print("Stay Working ");
