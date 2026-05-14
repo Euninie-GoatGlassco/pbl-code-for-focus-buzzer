@@ -60,6 +60,13 @@ for (int i = countdownStart; i > 0; i--) {
   }
 }
 
+//  Focus Timer started
+void focusMode() {
+unsigned long startTime = millis();
+
+while (millis() - startTime < (unsigned long)focusTime * 1000) {
+
+
 
 
 
