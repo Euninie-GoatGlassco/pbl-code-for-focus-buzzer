@@ -50,6 +50,16 @@ for (int i = countdownStart; i > 0; i--) {
     lcd.print("Focus starts");
     lcd.setCursor(0, 1);
     lcd.print(i)
+     tone(buzzerPin, 800);
+
+    delay(200);
+
+    noTone(buzzerPin);
+
+    delay(800);
+  }
+}
+
 
 
 
