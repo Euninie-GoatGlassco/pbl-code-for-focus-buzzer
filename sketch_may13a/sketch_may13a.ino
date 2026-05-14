@@ -1,0 +1,73 @@
+#include <LiquidCrystal.h>
+
+// LCD pin connections
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+// Buzzer pin
+const int buzzerPin = 8;
+
+// Focus time in milliseconds
+// 60000 ms = 1 minute
+const long focusInterval = 60000;
+
+// Variable to store previous time
+unsigned long previousTime = 0;
+
+void setup() {
+
+  // Start LCD
+  lcd.begin(16, 2);
+
+  // Set buzzer pin as output
+  pinMode(buzzerPin, OUTPUT);
+
+  // First LCD message
+  lcd.setCursor(0, 0);
+  lcd.print("Focus Mode");
+
+  lcd.setCursor(0, 1);
+  lcd.print("Stay Focused");
+
+  // Small startup beep
+  tone(buzzerPin, 1000);
+  delay(300);
+  noTone(buzzerPin);
+}
+
+void loop() {
+
+  // Current time
+  unsigned long currentTime = millis();
+
+  // Check if focus interval passed
+  if (currentTime - previousTime >= focusInterval) {
+
+    // Save current time
+    previousTime = currentTime;
+
+    // LCD reminder message
+    lcd.clear();
+
+    lcd.setCursor(0, 0);
+    lcd.print("Take a Breath");
+
+    lcd.setCursor(0, 1);
+    lcd.print("Refocus!");
+
+    // Buzzer sound
+    tone(buzzerPin, 1500);
+
+    delay(1000);
+
+    noTone(buzzerPin);
+
+    // Return to normal screen
+    lcd.clear();
+
+    lcd.setCursor(0, 0);
+    lcd.print("Focus Mode");
+
+    lcd.setCursor(0, 1);
+    lcd.print("Stay Focused");
+  }
+}
