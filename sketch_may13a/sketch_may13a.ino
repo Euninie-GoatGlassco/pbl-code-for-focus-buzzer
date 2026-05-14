@@ -39,7 +39,6 @@ void endMelody() {
   delay(500);
   noTone(buzzerPin);
 }
-// to Manually start Focus
 
 // Countdown before the focus buzzer starts
 
@@ -66,6 +65,16 @@ void focusMode() {
 unsigned long startTime = millis();
 
 while (millis() - startTime < (unsigned long)focusTime * 1000) {
+
+    lcd.setCursor(0, 0);
+    lcd.print("FOCUS MODE   ");
+
+    lcd.setCursor(0, 1);
+    lcd.print("Stay Working ");
+
+    delay(200);
+  }
+}
 
 
 
