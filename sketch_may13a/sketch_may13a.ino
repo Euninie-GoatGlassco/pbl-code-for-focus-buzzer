@@ -91,62 +91,32 @@ void finish() {
 
   delay(3000);
 }
+// Main loop
 
+void loop() {
 
+  lcd.setCursor(0, 0);
+  lcd.print("Press button ");
+
+  lcd.setCursor(0, 1);
+  lcd.print("to start     ");
+
+  // WAIT until button is pressed
+  while (digitalRead(buttonPin) == HIGH) {
+
+  }
+
+  delay(200);
+
+  countdown();
+
+  focusMode();
+
+  finish();
+}
 
 
 
 
 
   
-
-  // First LCD message
-  lcd.setCursor(0, 0);
-  lcd.print("Focus Mode");
-
-  lcd.setCursor(0, 1);
-  lcd.print("Stay Focused");
-
-  // Small startup beep
-  tone(buzzerPin, 1000);
-  delay(300);
-  noTone(buzzerPin);
-}
-
-void loop() {
-
-  // Current time
-  unsigned long currentTime = millis();
-
-  // Check if focus interval passed
-  if (currentTime - previousTime >= focusInterval) {
-
-    // Save current time
-    previousTime = currentTime;
-
-    // LCD reminder message
-    lcd.clear();
-
-    lcd.setCursor(0, 0);
-    lcd.print("Take a Breath");
-
-    lcd.setCursor(0, 1);
-    lcd.print("Refocus!");
-
-    // Buzzer sound
-    tone(buzzerPin, 1500);
-
-    delay(1000);
-
-    noTone(buzzerPin);
-
-    // Return to normal screen
-    lcd.clear();
-
-    lcd.setCursor(0, 0);
-    lcd.print("Focus Mode");
-
-    lcd.setCursor(0, 1);
-    lcd.print("Stay Focused");
-  }
-}
