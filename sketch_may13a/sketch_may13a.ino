@@ -8,20 +8,40 @@ const int focusTime = 60; // the amount of time the focus timer
 const int button = 7; // declaring the pin for the button
 const int countdown= 5; // before the focus buzzer timer
 
-// Focus time in milliseconds
-// 60000 ms = 1 minute
-const long focusInterval = 60000;
-
-// Variable to store previous time
-unsigned long previousTime = 0;
 
 void setup() {
-
-  // Start LCD
-  lcd.begin(16, 2);
-
-  // Set buzzer pin as output
+ // Defining outputs and inputs
   pinMode(buzzerPin, OUTPUT);
+  pinMode(buttonPin, INPUT_PULLUP);
+
+  lcd.begin(16, 2);
+  lcd.setCursor(0, 0);
+  lcd.print("Press button");
+  lcd.setCursor(0, 1);
+  lcd.print("to start");
+}
+//  Buzzer Melody at the end of the Focus time
+
+void endMelody() {
+
+  tone(buzzerPin, 1200);
+  delay(300);
+  noTone(buzzerPin)
+  delay(100);
+
+  tone(buzzerPin, 1500);
+  delay(300);
+  noTone(buzzerPin);
+
+  delay(100);
+
+  tone(buzzerPin, 1800);
+  delay(500);
+  noTone(buzzerPin);
+
+
+
+  
 
   // First LCD message
   lcd.setCursor(0, 0);
